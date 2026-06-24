@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astamob.com – Crypto Live Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+  <!-- Ocean Wave Background -->
+  <div class="ocean-bg">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    <div class="bubbles" id="bubbles"></div>
+  </div>
+ 
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+            <circle cx="19" cy="19" r="18" stroke="url(#lg)" stroke-width="2"/>
+            <path d="M10 22 Q14 13 19 19 Q24 25 28 16" stroke="#7FE4D4" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <circle cx="10" cy="22" r="2.5" fill="#7FE4D4"/>
+            <circle cx="28" cy="16" r="2.5" fill="#F4B860"/>
+            <defs>
+              <linearGradient id="lg" x1="0" y1="0" x2="38" y2="38">
+                <stop offset="0%" stop-color="#7FE4D4"/>
+                <stop offset="100%" stop-color="#1A6B8A"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Astamob</span>
+          <span class="logo-tld">.com</span>
+          <span class="logo-tagline">Live Crypto Tracker</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <span class="nav-item active">Pasar</span>
+        <span class="nav-item">Trending</span>
+        <span class="nav-item">Favorit</span>
+      </nav>
+      <div class="header-right">
+        <div class="live-badge">
+          <span class="pulse-dot"></span> LIVE
+        </div>
+        <div class="last-update" id="lastUpdate">Memuat...</div>
+      </div>
+    </div>
+  </header>
+ 
+  <!-- Hero Stats Bar -->
+  <section class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-label">Total Koin</span>
+      <span class="stat-value" id="totalCoins">–</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-label">Market Cap Global</span>
+      <span class="stat-value" id="globalMarketCap">–</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-label">Volume 24j</span>
+      <span class="stat-value" id="totalVolume">–</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-label">Dominasi BTC</span>
+      <span class="stat-value" id="btcDominance">–</span>
+    </div>
+  </section>
+ 
+  <!-- Main Content -->
+  <main class="main">
+ 
+    <!-- Controls -->
+    <div class="controls">
+      <div class="search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="Cari koin... (Bitcoin, ETH, ...)" />
+      </div>
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="gainers">📈 Naik</button>
+        <button class="filter-btn" data-filter="losers">📉 Turun</button>
+      </div>
+      <div class="view-sort">
+        <select id="sortSelect" class="sort-select">
+          <option value="market_cap_desc">Market Cap ↓</option>
+          <option value="volume_desc">Volume ↓</option>
+          <option value="price_desc">Harga ↓</option>
+          <option value="change_desc">Perubahan ↓</option>
+        </select>
+      </div>
+    </div>
+ 
+    <!-- Table Header -->
+    <div class="table-header">
+      <div class="col-rank">#</div>
+      <div class="col-coin">Koin</div>
+      <div class="col-price">Harga (USD)</div>
+      <div class="col-change">24j %</div>
+      <div class="col-high">Tinggi 24j</div>
+      <div class="col-low">Rendah 24j</div>
+      <div class="col-mcap">Market Cap</div>
+      <div class="col-vol">Volume 24j</div>
+    </div>
+ 
+    <!-- Crypto Table -->
+    <div class="crypto-list" id="cryptoList">
+      <div class="loading-state">
+        <div class="loading-wave">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p>Menyelam ke data pasar...</p>
+      </div>
+    </div>
+ 
+    <!-- Pagination -->
+    <div class="pagination" id="pagination"></div>
+  </main>
+ 
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Astamob<span>.com</span></div>
+      <p class="footer-note">Data diperbarui setiap 30 detik · Didukung CoinGecko API · Harga dalam USD</p>
+      <p class="footer-copy">© 2026 Astamob.com – Pantau ombak kripto dunia</p>
+    </div>
+  </footer>
+ 
+  <script src="app.js"></script>
+</body>
+</html>
+ 
